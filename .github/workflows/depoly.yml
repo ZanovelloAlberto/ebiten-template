@@ -7,10 +7,11 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.3.1
 
-      - name: Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
-        steps: 
-        - run: GOOS=js GOARCH=wasm go build -o web/yourgame.wasm
-        - run: cp $(go env GOROOT)/misc/wasm/wasm_exec.js ./web
+      - name: Install
+        uses: actions/setup-go@v2
+        run: GOOS=js GOARCH=wasm go build -o web/yourgame.wasm
+        
+      - run: cp $(go env GOROOT)/misc/wasm/wasm_exec.js ./web
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5
