@@ -1,9 +1,11 @@
 <p align="center">
-  <a href="" rel="noopener">
- <img width=200px height=200px src="https://opengameart.org/sites/default/files/01coin.gif" alt="Project logo"></a>
+  <img height=200px src="https://opengameart.org/sites/default/files/preview_246.png" ></a>
 </p>
 
-<h3 align="center">Glockchain</h3>
+<h2 align="center">Ebiten Game</h2>
+<!-- <p align="center" >
+<a href="https://zanovelloalberto.github.io/EbitenGame/" size="big">Ebiten Game</a>
+</p> -->
 
 <div align="center">
 
@@ -11,10 +13,42 @@
 
 </div>
 
+
 ---
+## [Play](https://zanovelloalberto.github.io/EbitenGame/)
+click play to open the preview
 
-the objective of this project is to create a crypto coin (work in progress)
+### Art
+creating of the game based on this [game art idea](https://opengameart.org/content/platform-pixel-art-assets). 
 
-### Reference
+### `res`
+the resources are placed in the `/res` folder.
+
+
+<table>
+
+  <tr>
+    <td><img height=40px src="res/anims/lizard.gif"></td>
+    <td><img height=40px src="res/anims/slime.gif"></td>
+    <td><img height=40px src="res/anims/eye.gif"></td>
+  </tr>
+  <tr>
+    <td><img height=40px src="res/anims/crystal.gif"></td>
+    <td><img height=40px src="res/anims/player.gif"></td>
+    <td><img height=40px src="res/anims/shot.gif"></td>
+  </tr>
+    <tr>
+    <td><img height=40px src="res/anims/powerup.gif"></td>
+    <td><img height=40px src="res/anims/powerup.gif"></td>
+    <td><img height=40px src="res/anims/powerup.gif"></td>
+  </tr>
+</table>
+
+Column A | Column B | Column C
+---------|----------|---------
+ A1 | B1 | C1
+ A2 | B2 | C2
+ A3 | B3 | C3
+<!-- ### Reference
 * *[SavjeeCoin](https://github.com/Savjee/SavjeeCoin)*
-* *[joe-glockchain](https://github.com/joeb000/glockchain)*
+* *[joe-glockchain](https://github.com/joeb000/glockchain)* -->
