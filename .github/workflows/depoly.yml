@@ -22,8 +22,8 @@ jobs:
         
       - run: cp $(go env GOROOT)/misc/wasm/wasm_exec.js web
 
-      - name: Copy Resources
-        run: cp -r res web
+      # - name: Copy Resources
+      #   run: cp -r res web
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5
