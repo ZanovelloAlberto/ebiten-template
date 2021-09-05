@@ -13,8 +13,6 @@
   
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
   
-[![Build Status](https://github.com/zanovelloalberto/EbitenGame/workflows/Build%20and%20Deploy/badge.svg](https://github.com/hajimehoshi/ebiten/actions)
-
 
 </div>
 
