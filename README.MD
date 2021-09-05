@@ -10,6 +10,8 @@
 <div align="center">
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
+  [![Build Status](https://github.com/zanovelloalberto/EbitenGame/workflows/test/badge.svg)](https://github.com/hajimehoshi/ebiten/actions)
+
 
 </div>
 
