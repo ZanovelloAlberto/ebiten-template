@@ -12,7 +12,8 @@ build-web:
 build-desk: 
 	- go build main.go
 
-
+run: 
+	- wasmserve ./main.go
 
 # VALITD
 
