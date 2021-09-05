@@ -8,9 +8,9 @@
 </p> -->
 
 <div align="center">
-
+[![Build Status](https://github.com/hajimehoshi/ebiten/workflows/test/badge.svg)](https://github.com/hajimehoshi/ebiten/actions?query=workflow%3Atest)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
-  [![Build Status](https://github.com/zanovelloalberto/EbitenGame/workflows/test/badge.svg)](https://github.com/hajimehoshi/ebiten/actions)
+[![Build Status](https://github.com/zanovelloalberto/EbitenGame/workflows/test/badge.svg)](https://github.com/hajimehoshi/ebiten/actions)
 
 
 </div>
