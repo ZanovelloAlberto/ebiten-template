@@ -66,7 +66,8 @@ func (g *Game) Draw(screen *ebiten.Image) {
 
 			sx := (t % tileXNum) * tileSize
 			sy := (t / tileXNum) * tileSize
-			screen.DrawImage(tilesImage.SubImage(image.Rect(sx, sy, sx+tileSize, sy+tileSize)).(*ebiten.Image), op)
+			yd := tilesImage.SubImage(image.Rect(sx, sy, sx+tileSize, sy+tileSize)).(*ebiten.Image)
+			screen.DrawImage(yd, op)
 		}
 	}
 
