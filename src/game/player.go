@@ -1,4 +1,4 @@
-package core
+package game
 
 import (
 	"egame/src/game/images"
@@ -7,7 +7,7 @@ import (
 )
 
 type Player struct {
-	positions [12]ebiten.Image
+	images [12]ebiten.Image
 
 	running bool
 
@@ -16,6 +16,8 @@ type Player struct {
 	state State
 
 	speed int
+
+	point Point
 }
 
 type State uint8
@@ -37,7 +39,7 @@ const (
 var ()
 
 var MainChar = Player{
-	positions: images.GetCharacter(0),
+	images:    images.GetCharacter(0),
 	state:     idle,
 	direction: Dfront,
 	speed:     2,
@@ -49,12 +51,16 @@ func init() {
 }
 
 // DRAW =====================
-func (p Player) Draw(screen *ebiten.Image) {
-	screen.DrawImage(&MainChar.positions[0], &ebiten.DrawImageOptions{})
+func (p *Player) Draw(screen *ebiten.Image) {
+	var opt = &ebiten.DrawImageOptions{}
+
+	// opt.GeoM.Translate(p)
+	screen.DrawImage(&MainChar.images[p.state], opt)
 }
 
 // UPDATE =====================
 
-func (p Player) Update() {
-	// inpututil.AppendPressedKeys()
+func (p *Player) Update() {
+	p.state = (p.state + 1) % 3
+	println(p.state)
 }

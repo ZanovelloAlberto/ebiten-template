@@ -1,4 +1,4 @@
-package core
+package game
 
 import (
 	"image"
@@ -18,7 +18,8 @@ type Game struct {
 }
 
 func (g *Game) Update() error {
-	g.count++
+	Ploading.Update()
+	MainChar.Update()
 	return nil
 }
 
@@ -30,6 +31,7 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	// sx, sy := frameOX+i*frameWidth, frameOY
 	// screen.DrawImage(runnerImage.SubImage(image.Rect(sx, sy, sx+frameWidth, sy+frameHeight)).(*ebiten.Image), op)
 	screen.Fill(image.Black)
+
 	MainChar.Draw(screen)
 	Ploading.Draw(screen)
 }

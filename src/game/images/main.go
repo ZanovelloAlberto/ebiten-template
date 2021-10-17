@@ -8,9 +8,10 @@ import (
 )
 
 const (
-	size  = 16
-	char  = "/res/characters.png"
-	tiles = "/res/basictiles.png"
+	size   = 16
+	assets = "/assets/"
+	char   = assets + "characters.png"
+	tiles  = assets + "basictiles.png"
 )
 
 func init() {
