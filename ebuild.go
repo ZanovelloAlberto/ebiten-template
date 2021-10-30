@@ -10,7 +10,7 @@ import (
 
 var (
 	Outdir = "build/"
-	Srcdir = "src/"
+	Srcdir = "core/"
 
 	GOROOT = build.Default.GOROOT
 )
@@ -76,6 +76,7 @@ func BuildWeb(serve bool) {
 	cmd.Stdout = &outb
 	cmd.Stderr = &errb
 	cmd.Run()
+	println(cmd.Path)
 	println("out:", outb.String(), "err:", errb.String())
 
 	//html file
@@ -83,6 +84,6 @@ func BuildWeb(serve bool) {
 
 	/// serve the build on browser
 	if serve {
-		http.ListenAndServe(":3000", http.FileServer(http.Dir(web_dir)))
+		http.ListenAndServe(":3001", http.FileServer(http.Dir(web_dir)))
 	}
 }
