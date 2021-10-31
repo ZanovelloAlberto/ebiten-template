@@ -1,7 +1,7 @@
 package game
 
 import (
-	"core/game/images"
+	// "core/game/images"
 
 	"github.com/hajimehoshi/ebiten/v2"
 )
@@ -39,7 +39,7 @@ const (
 var ()
 
 var MainChar = Player{
-	images:    images.GetCharacter(0),
+	// images:    images.GetCharacter(0),
 	state:     idle,
 	direction: Dfront,
 	speed:     2,

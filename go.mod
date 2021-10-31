@@ -8,6 +8,12 @@ require (
 	golang.org/x/sys v0.0.0-20211025201205-69cdffdb9359 // indirect
 )
 
+require (
+	github.com/jezek/xgb v0.0.0-20210312150743-0e0f116e1240 // indirect
+	golang.org/x/image v0.0.0-20210628002857-a66eb6448b8d // indirect
+	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c // indirect
+)
+
 go 1.16
 
 // Keywords distinguish different kinds of directives in a go.mod file.
