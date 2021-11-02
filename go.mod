@@ -1,5 +1,4 @@
-module core
-
+module github.com/ZanovelloAlberto/EbitenGame
 require (
 	github.com/go-gl/glfw/v3.3/glfw v0.0.0-20211024062804-40e447a793be // indirect
 	github.com/hajimehoshi/ebiten/v2 v2.2.1

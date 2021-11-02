@@ -3,14 +3,8 @@ package game
 import (
 	"image/color"
 	_ "image/png"
-	"log"
 
 	"github.com/hajimehoshi/ebiten/v2"
-)
-
-const (
-	screenWidth  = 400
-	screenHeight = 400
 )
 
 type Game struct {
@@ -34,16 +28,4 @@ func (g *Game) Draw(screen *ebiten.Image) {
 
 	MainChar.Draw(screen)
 	Vloading.Draw(screen)
-}
-
-func (g *Game) Layout(outsideWidth, outsideHeight int) (int, int) {
-	return screenWidth, screenHeight
-}
-
-func Start() {
-
-	ebiten.SetMaxTPS(15)
-	if err := ebiten.RunGame(&Game{}); err != nil {
-		log.Fatal(err)
-	}
 }

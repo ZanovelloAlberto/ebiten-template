@@ -9,9 +9,10 @@ const (
 	time = 40
 )
 
-func init() {
-
-}
+const (
+	screenWidth  = 400
+	screenHeight = 400
+)
 
 var Vloading = &Loading{
 	presence: true,
