@@ -1,4 +1,4 @@
-package game
+package sprite
 
 type Map = struct {
 	camera Point
@@ -6,8 +6,8 @@ type Map = struct {
 
 var Pmap = Map{
 	camera: Point{
-		x: screenWidth/2 - MainChar.point.x,
-		y: screenHeight/2 - MainChar.point.y,
+		x: screenWidth/2 - PPlayer.point.x,
+		y: screenHeight/2 - PPlayer.point.y,
 	},
 }
 

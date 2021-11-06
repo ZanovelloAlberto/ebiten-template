@@ -1,9 +1,7 @@
 package main
 
 import (
-	"log"
-
-	"github.com/ZanovelloAlberto/EbitenGame/core/game"
+	"github.com/ZanovelloAlberto/EbitenGame/core"
 	"github.com/hajimehoshi/ebiten/v2"
 )
 
@@ -13,26 +11,28 @@ const (
 )
 
 func main() {
-	a := &Desktop{}
+	a := &Desktop{
+		core: *core.CreateCore(screenWidth, screenHeight),
+	}
 	ebiten.SetMaxTPS(15)
 	if err := ebiten.RunGame(a); err != nil {
-		log.Fatal(err)
+		panic(err.Error())
 	}
+
 }
 
 type Desktop struct {
-	core game.Game
+	core core.Core
 }
 
 func (uno *Desktop) Draw(screen *ebiten.Image) {
 	uno.core.Draw(screen)
-
 }
 
 func (uno *Desktop) Update() error {
-	return uno.Update()
+	return uno.core.Update()
 }
 
 func (g *Desktop) Layout(outsideWidth, outsideHeight int) (int, int) {
-	return outsideWidth, outsideHeight
+	return g.core.Layout(outsideWidth, outsideHeight)
 }

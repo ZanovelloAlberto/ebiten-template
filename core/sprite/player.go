@@ -1,4 +1,4 @@
-package game
+package sprite
 
 import (
 	// "core/game/images"
@@ -39,7 +39,7 @@ const (
 
 var ()
 
-var MainChar = Player{
+var PPlayer = Player{
 	images:    assets.GetCharacter(0),
 	state:     idle,
 	direction: Dfront,
@@ -56,7 +56,7 @@ func (p *Player) Draw(screen *ebiten.Image) {
 	var opt = &ebiten.DrawImageOptions{}
 
 	// opt.GeoM.Translate(p)
-	screen.DrawImage(&MainChar.images[p.state], opt)
+	screen.DrawImage(&PPlayer.images[p.state], opt)
 }
 
 // UPDATE =====================

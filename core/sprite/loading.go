@@ -1,4 +1,4 @@
-package game
+package sprite
 
 import (
 	"github.com/hajimehoshi/ebiten/v2"
@@ -14,7 +14,7 @@ const (
 	screenHeight = 400
 )
 
-var Vloading = &Loading{
+var PLoading = &Loading{
 	presence: true,
 	current:  0,
 }
