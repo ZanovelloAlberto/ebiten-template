@@ -30,6 +30,8 @@ func (core *Core) Draw(screen *ebiten.Image) {
 
 func (uno *Core) Update() error {
 
+	S.PLoading.Update()
+	S.PPlayer.Update()
 	return nil
 }
 
@@ -39,7 +41,7 @@ func (g *Core) Layout(outsideWidth, outsideHeight int) (int, int) {
 
 func Run(core *Core) {
 
-	ebiten.SetMaxTPS(15)
+	ebiten.SetMaxTPS(1)
 	if err := ebiten.RunGame(core); err != nil {
 		panic(err.Error())
 	}

@@ -55,6 +55,7 @@ func init() {
 func (p *Player) Draw(screen *ebiten.Image) {
 	var opt = &ebiten.DrawImageOptions{}
 
+	opt.GeoM.Scale(2, 2)
 	// opt.GeoM.Translate(p)
 	screen.DrawImage(&PPlayer.images[p.state], opt)
 }

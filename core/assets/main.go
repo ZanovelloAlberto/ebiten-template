@@ -41,7 +41,7 @@ func GetCharacter(n int) (r [12]ebiten.Image) {
 	vx := (n % 4) * 48
 
 	for i := 0; i < 12; i++ {
-		r[i] = *GetSqr(&Characters, vx+(i%3)*16, vy+(i/3)*16)
+		r[i] = *GetSqr(&Characters, vy+(i/3)*16, vx+(i%3)*16)
 	}
 	return
 }

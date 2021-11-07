@@ -6,12 +6,9 @@ import (
 )
 
 const (
-	time = 40
-)
-
-const (
-	screenWidth  = 400
-	screenHeight = 400
+	time         = 40
+	screenHeight = 100
+	screenWidth  = 100
 )
 
 var PLoading = &Loading{
@@ -36,6 +33,7 @@ func (u Loading) Draw(screen *ebiten.Image) {
 	if u.presence {
 
 		ebitenutil.DebugPrintAt(screen, "randome", 0, screenHeight/2)
+		ebitenutil.DebugPrint(screen, "randome")
 		// ebitenutil.DebugPrint(screen, "loading")
 		// ebitenutil.DebugPrint(screen, "culo")
 	}

@@ -6,15 +6,15 @@ import (
 )
 
 const (
-	screenWidth  = 400
-	screenHeight = 400
+	screenWidth  = 100
+	screenHeight = 100
 )
 
 func main() {
 	a := &Desktop{
 		core: *core.CreateCore(screenWidth, screenHeight),
 	}
-	ebiten.SetMaxTPS(15)
+	ebiten.SetMaxTPS(5)
 	if err := ebiten.RunGame(a); err != nil {
 		panic(err.Error())
 	}
