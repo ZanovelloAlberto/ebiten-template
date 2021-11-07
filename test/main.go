@@ -12,7 +12,6 @@ var (
 func main() {
 
 	// a := bytes.NewBuffer(img)
-
 	// img, e := png.Decode(a)
 	// // println(e.Error())
 	// //	image: unknown format
