@@ -16,9 +16,10 @@ jobs:
         
         
       - name: Install
-        run: GOOS=js GOARCH=wasm go build -o web/public/main.wasm web/main.go
+        run: GOOS=js GOARCH=wasm go build -o web/public/main.wasm ./web/
         
       - run: cp $(go env GOROOT)/misc/wasm/wasm_exec.js web/public
+      - run: ls web/public/index.html
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5

@@ -2,4 +2,4 @@ test/
 mobile/build
 web/build
 */build/
-
+*.wasm
