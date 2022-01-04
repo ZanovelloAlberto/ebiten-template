@@ -16,14 +16,9 @@ jobs:
         
         
       - name: Install
-        run: GOOS=js GOARCH=wasm go build -o web/build/main.wasm web/main.go
-      # ${{ github.workspace }}/
-      #- name: Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
+        run: GOOS=js GOARCH=wasm go build -o web/public/main.wasm web/main.go
         
-      - run: cp $(go env GOROOT)/misc/wasm/wasm_exec.js web/build
-
-      # - name: Copy Resources
-      #   run: cp -r res web
+      - run: cp $(go env GOROOT)/misc/wasm/wasm_exec.js web/public
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5
