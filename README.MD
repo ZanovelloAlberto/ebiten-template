@@ -10,7 +10,7 @@
 <div align="center">
 
   
-[![Build Status](https://github.com/zanovelloalberto/EbitenGame/workflows/Build%20and%20Deploy/badge.svg)](https://github.com/hajimehoshi/ebiten/actions?query=workflow%3Atest)
+[![Build Status](https://github.com/zanovelloalberto/EbitenGame/workflows/Build%20and%20Deploy/badge.svg)](github.com/zanovelloalberto/EbitenGame/workflows/Build%20and%20Deploy/badge.svg)
   
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
   
