@@ -5,7 +5,7 @@ import (
 )
 
 var (
-	//go:embed bu.png
+	//go:embed basictiles.png
 	img []byte
 )
 
