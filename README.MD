@@ -19,7 +19,7 @@
 
 
 ---
-## [Play](https://zanovelloalberto.github.io/EbitenGame/)
+## [Play](https://zanovelloalberto.github.io/ebiten-template/)
 click play to open the preview
 
 ### Art
