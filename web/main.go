@@ -1,38 +1,20 @@
 package main
 
 import (
-	"github.com/ZanovelloAlberto/EbitenGame/core"
+	"log"
+
+	twenty48 "github.com/ZanovelloAlberto/EbitenGame/2048"
 	"github.com/hajimehoshi/ebiten/v2"
 )
 
-const (
-	screenWidth  = 100
-	screenHeight = 100
-)
-
 func main() {
-	a := &Desktop{
-		core: *core.CreateCore(screenWidth, screenHeight),
+	game, err := twenty48.NewGame()
+	if err != nil {
+		log.Fatal(err)
 	}
-	ebiten.SetMaxTPS(5)
-	if err := ebiten.RunGame(a); err != nil {
-		panic(err.Error())
+	ebiten.SetWindowSize(twenty48.ScreenWidth, twenty48.ScreenHeight)
+	ebiten.SetWindowTitle("2048 (Ebiten Demo)")
+	if err := ebiten.RunGame(game); err != nil {
+		log.Fatal(err)
 	}
-
-}
-
-type Desktop struct {
-	core core.Core
-}
-
-func (uno *Desktop) Draw(screen *ebiten.Image) {
-	uno.core.Draw(screen)
-}
-
-func (uno *Desktop) Update() error {
-	return uno.core.Update()
-}
-
-func (g *Desktop) Layout(outsideWidth, outsideHeight int) (int, int) {
-	return g.core.Layout(outsideWidth, outsideHeight)
 }
