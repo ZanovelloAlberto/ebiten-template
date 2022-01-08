@@ -15,6 +15,7 @@
 package twenty48
 
 import (
+	_ "embed"
 	"math/rand"
 	"time"
 
@@ -25,10 +26,15 @@ func init() {
 	rand.Seed(time.Now().UnixNano())
 }
 
+var (
+	//go:embed 2048_icon.png
+	icon []byte
+)
+
 const (
 	ScreenWidth  = 420
 	ScreenHeight = 600
-	boardSize    = 5
+	boardSize    = 4
 )
 
 // Game represents a game state.
@@ -36,6 +42,7 @@ type Game struct {
 	input      *Input
 	board      *Board
 	boardImage *ebiten.Image
+	actions    *Actions
 }
 
 // NewGame generates a new Game object.
@@ -43,6 +50,7 @@ func NewGame() (*Game, error) {
 	g := &Game{
 		input: NewInput(),
 	}
+	g.actions, _ = NewActions()
 	var err error
 	g.board, err = NewBoard(boardSize)
 	if err != nil {
@@ -59,6 +67,7 @@ func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeigh
 // Update updates the current game state.
 func (g *Game) Update() error {
 	g.input.Update()
+	g.actions.Update()
 	if err := g.board.Update(g.input); err != nil {
 		return err
 	}
@@ -71,6 +80,7 @@ func (g *Game) Draw(screen *ebiten.Image) {
 		w, h := g.board.Size()
 		g.boardImage = ebiten.NewImage(w, h)
 	}
+
 	screen.Fill(backgroundColor)
 	g.board.Draw(g.boardImage)
 	op := &ebiten.DrawImageOptions{}
@@ -80,4 +90,5 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	y := (sh - bh) / 2
 	op.GeoM.Translate(float64(x), float64(y))
 	screen.DrawImage(g.boardImage, op)
+	g.actions.Draw(screen)
 }

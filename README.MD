@@ -1,13 +1,6 @@
-<p align="center">
-  <img height=200px src="./" ></a>
-</p>
 
 <h2 align="center">Ebiten Game</h2>
-<!-- <p align="center" >
-<a href="https://zanovelloalberto.github.io/EbitenGame/" size="big">Ebiten Game</a>
-</p> -->
 
-<div align="center">
 
   
 [![Build Status](https://github.com/zanovelloalberto/EbitenGame/workflows/Build%20and%20Deploy/badge.svg)](github.com/zanovelloalberto/EbitenGame/workflows/Build%20and%20Deploy/badge.svg)
@@ -19,13 +12,12 @@
 
 
 ---
-## [Play](https://zanovelloalberto.github.io/ebiten-template/)
-click play to open the preview
+## [gh-pages](https://zanovelloalberto.github.io/ebiten-template/)
 
-### Art
-creating of the game based on this [game art idea](https://opengameart.org/content/platform-pixel-art-assets). 
+### ebiten game-dev-lib
 
-### `res`
-the resources are placed in the `/res` folder.
-
-
+- [imgui-go](https://github.com/inkyblackness/imgui-go)
+- [furex](https://github.com/yohamta/furex)
+- [Tetra3D](https://github.com/SolarLune/Tetra3d)
+https://github.com/kisielk/errcheck
+github.com/pkg/profile

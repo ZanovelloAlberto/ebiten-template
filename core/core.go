@@ -1,7 +1,9 @@
 package core
 
 import (
+	"bytes"
 	"image/color"
+	"image/png"
 
 	S "github.com/ZanovelloAlberto/EbitenGame/core/sprite"
 	"github.com/hajimehoshi/ebiten/v2"
@@ -45,4 +47,12 @@ func Run(core *Core) {
 	if err := ebiten.RunGame(core); err != nil {
 		panic(err.Error())
 	}
+}
+func GetImage(val *[]byte) *ebiten.Image {
+
+	img, err := png.Decode(bytes.NewReader(*val))
+	if err != nil {
+		panic(err.Error() + " non va la decodifica")
+	}
+	return ebiten.NewImageFromImage(img)
 }
