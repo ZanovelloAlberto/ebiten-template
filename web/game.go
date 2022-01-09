@@ -12,24 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package twenty48
+package main
 
 import (
-	_ "embed"
 	"math/rand"
 	"time"
 
+	"github.com/ZanovelloAlberto/EbitenGame/core"
 	"github.com/hajimehoshi/ebiten/v2"
 )
 
 func init() {
 	rand.Seed(time.Now().UnixNano())
 }
-
-var (
-	//go:embed 2048_icon.png
-	icon []byte
-)
 
 const (
 	ScreenWidth  = 420
@@ -40,7 +35,7 @@ const (
 // Game represents a game state.
 type Game struct {
 	input      *Input
-	board      *Board
+	board      *core.Board
 	boardImage *ebiten.Image
 	actions    *Actions
 }
@@ -52,7 +47,7 @@ func NewGame() (*Game, error) {
 	}
 	g.actions, _ = NewActions()
 	var err error
-	g.board, err = NewBoard(boardSize)
+	g.board, err = core.NewBoard(boardSize)
 	if err != nil {
 		return nil, err
 	}
@@ -68,7 +63,7 @@ func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeigh
 func (g *Game) Update() error {
 	g.input.Update()
 	g.actions.Update()
-	if err := g.board.Update(g.input); err != nil {
+	if err := g.board.Update(g.input.Dir); err != nil {
 		return err
 	}
 	return nil
@@ -81,7 +76,7 @@ func (g *Game) Draw(screen *ebiten.Image) {
 		g.boardImage = ebiten.NewImage(w, h)
 	}
 
-	screen.Fill(backgroundColor)
+	screen.Fill(core.BackgroundColor)
 	g.board.Draw(g.boardImage)
 	op := &ebiten.DrawImageOptions{}
 	sw, sh := screen.Size()

@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package twenty48
+package core
 
 import (
 	"errors"
@@ -50,7 +50,7 @@ func (b *Board) tileAt(x, y int) *Tile {
 }
 
 // Update updates the board state.
-func (b *Board) Update(input *Input) error {
+func (b *Board) Update(input func() (Dir, bool)) error {
 	for t := range b.tiles {
 		if err := t.Update(); err != nil {
 			return err
@@ -65,7 +65,7 @@ func (b *Board) Update(input *Input) error {
 		}
 		return nil
 	}
-	if dir, ok := input.Dir(); ok {
+	if dir, ok := input(); ok {
 		if err := b.Move(dir); err != nil {
 			return err
 		}
@@ -121,7 +121,7 @@ func (b *Board) Size() (int, int) {
 
 // Draw draws the board to the given boardImage.
 func (b *Board) Draw(boardImage *ebiten.Image) {
-	boardImage.Fill(frameColor)
+	boardImage.Fill(FrameColor)
 	for j := 0; j < b.size; j++ {
 		for i := 0; i < b.size; i++ {
 			v := 0

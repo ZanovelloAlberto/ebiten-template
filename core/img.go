@@ -1,10 +1,9 @@
-package twenty48
+package core
 
 import (
-	"fmt"
 	"image"
 
-	"github.com/ZanovelloAlberto/EbitenGame/core"
+	"github.com/ZanovelloAlberto/EbitenGame/core/assets"
 	"github.com/hajimehoshi/ebiten/v2"
 )
 
@@ -16,9 +15,8 @@ type Picture struct {
 func NewPicture(img []byte, w int, h int) (res *Picture) {
 	res = &Picture{}
 	res.size = image.Pt(w, h)
-	res.img = core.GetImage(&img)
+	res.img = assets.GetImage(&img)
 
-	println(res.img)
 	return res
 
 }
@@ -28,14 +26,7 @@ func (p *Picture) Size() (int, int) {
 
 func (pic *Picture) Draw(screen *ebiten.Image, frame image.Rectangle) {
 
-	// printing the values of x and y
-	fmt.Printf("%f \n", float64(frame.Max.X-frame.Min.X)/float64(pic.size.X))
-	// shared.FillRect(screen, frame, color.RGBA{0, 0xff, 0, 0xff})
 	d := ebiten.DrawImageOptions{}
-	// println(pic.img.Size())
-	// println(frame.Max.X-frame.Min.X, frame.Max.Y-frame.Min.Y)
-	// println(float64(frame.Min.X), float64(frame.Min.Y))
-	// println(frame.Min.X, frame.Min.Y)
 	w, h := pic.img.Size()
 	uno, due := float64(frame.Max.X-frame.Min.X)/float64(w), float64(frame.Max.Y-frame.Min.Y)/float64(h)
 	a, b := float64(frame.Min.X), float64(frame.Min.Y)

@@ -1,4 +1,4 @@
-package twenty48
+package core
 
 import (
 	"image"

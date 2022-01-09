@@ -1,9 +1,10 @@
-package twenty48
+package main
 
 import (
-	_ "embed"
 	"image/color"
 
+	"github.com/ZanovelloAlberto/EbitenGame/core"
+	"github.com/ZanovelloAlberto/EbitenGame/core/assets"
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/yohamta/furex"
 	"github.com/yohamta/furex/examples/shared"
@@ -47,7 +48,7 @@ func (a *Actions) buildUI() {
 	top.Justify = furex.JustifySpaceBetween
 	top.AlignItems = furex.AlignItemCenter
 	// top.AddChild(NewTextField(100, 50, color.RGBA{0xff, 0, 0, 0xff}))
-	top.AddChild(NewPicture(icon, 50, 50))
+	top.AddChild(core.NewPicture(assets.Icon, 50, 50))
 	// print(string(icon))
 	// top.AddChild(shared.NewBox(100, 30, color.RGBA{0xff, 0xff, 0xff, 0xff}))
 	top.AddChild(shared.NewBox(50, 50, color.RGBA{0, 0xff, 0, 0xff}))

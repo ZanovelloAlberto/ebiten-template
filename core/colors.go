@@ -12,15 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package twenty48
+package core
 
 import (
 	"image/color"
 )
 
 var (
-	backgroundColor = color.RGBA{0xfa, 0xf8, 0xef, 0xff}
-	frameColor      = color.RGBA{0xbb, 0xad, 0xa0, 0xff}
+	BackgroundColor = color.RGBA{0xfa, 0xf8, 0xef, 0xff}
+	FrameColor      = color.RGBA{0xbb, 0xad, 0xa0, 0xff}
 )
 
 func tileColor(value int) color.Color {
