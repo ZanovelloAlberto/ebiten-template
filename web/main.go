@@ -2,10 +2,11 @@ package main
 
 import "github.com/hajimehoshi/ebiten/v2"
 
+var game *Game
+
 func main() {
 	game, err := NewGame()
 	if err != nil {
-
 	}
 	ebiten.SetWindowSize(ScreenWidth, ScreenHeight)
 	ebiten.SetWindowTitle("2048")

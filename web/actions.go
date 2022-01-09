@@ -43,33 +43,30 @@ func (a *Actions) buildUI() {
 	a.RootFlex.AlignContent = furex.AlignContentCenter
 
 	// top container
-	top := furex.NewFlex(ScreenWidth-20, 70)
+	top := furex.NewFlex(ScreenWidth-80, 100)
+	top.SetMargin([]int{10, 10, 10, 10})
 	top.Direction = furex.Row
 	top.Justify = furex.JustifySpaceBetween
 	top.AlignItems = furex.AlignItemCenter
-	// top.AddChild(NewTextField(100, 50, color.RGBA{0xff, 0, 0, 0xff}))
-	top.AddChild(core.NewPicture(assets.Icon, 50, 50))
-	// print(string(icon))
-	// top.AddChild(shared.NewBox(100, 30, color.RGBA{0xff, 0xff, 0xff, 0xff}))
+	top.AddChild(core.NewPicture(assets.Icon, 100, 100))
+	// top.AddChild(core.NewTextField(0, 0, core.FrameColor))
 	top.AddChild(shared.NewBox(50, 50, color.RGBA{0, 0xff, 0, 0xff}))
 	a.RootFlex.AddChildContainer(top)
-
-	// center
-	// rootFlex.AddChild(shared.NewButton(100, 50))
 
 	// bottom container
 	bottom := furex.NewFlex(ScreenWidth, 70)
 	bottom.Direction = furex.Row
 	bottom.Justify = furex.JustifyCenter
 	bottom.AlignItems = furex.AlignItemEnd
-	bottom.AddChild(buttonWithMargin(50, 30, []int{5, 5, 10, 5}))
-	bottom.AddChild(buttonWithMargin(50, 30, []int{5, 5, 10, 5}))
-	bottom.AddChild(buttonWithMargin(50, 30, []int{5, 5, 10, 5}))
-	bottom.AddChild(buttonWithMargin(50, 30, []int{5, 5, 10, 5}))
+	bottom.AddChild(core.NewButton(50, 50, func() {
+		board, _ := core.NewBoard(4)
+		game.board = board
+	}, "NEW GAME"))
 	a.RootFlex.AddChildContainer(bottom)
 }
-func buttonWithMargin(w, h int, margin []int) *shared.Button {
-	b := shared.NewButton(w, h)
-	b.SetMargin(margin)
-	return b
-}
+
+// func buttonWithMargin(w, h int, margin []int) *shared.Button {
+// 	b := shared.NewButton(w, h)
+// 	b.SetMargin(margin)
+// 	return b
+// }
