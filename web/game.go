@@ -35,7 +35,6 @@ const (
 // Game represents a game state.
 type Game struct {
 	input      *Input
-	board      *core.Board
 	boardImage *ebiten.Image
 	actions    *Actions
 }
@@ -47,7 +46,7 @@ func NewGame() (*Game, error) {
 	}
 	g.actions, _ = NewActions()
 	var err error
-	g.board, err = core.NewBoard(boardSize)
+	core.GameBoard, err = core.NewBoard(boardSize)
 	if err != nil {
 		return nil, err
 	}
@@ -63,7 +62,7 @@ func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeigh
 func (g *Game) Update() error {
 	g.input.Update()
 	g.actions.Update()
-	if err := g.board.Update(g.input.Dir); err != nil {
+	if err := core.GameBoard.Update(g.input.Dir); err != nil {
 		return err
 	}
 	return nil
@@ -72,12 +71,12 @@ func (g *Game) Update() error {
 // Draw draws the current game to the given screen.
 func (g *Game) Draw(screen *ebiten.Image) {
 	if g.boardImage == nil {
-		w, h := g.board.Size()
+		w, h := core.GameBoard.Size()
 		g.boardImage = ebiten.NewImage(w, h)
 	}
 
 	screen.Fill(core.BackgroundColor)
-	g.board.Draw(g.boardImage)
+	core.GameBoard.Draw(g.boardImage)
 	op := &ebiten.DrawImageOptions{}
 	sw, sh := screen.Size()
 	bw, bh := g.boardImage.Size()

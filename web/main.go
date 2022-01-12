@@ -2,8 +2,6 @@ package main
 
 import "github.com/hajimehoshi/ebiten/v2"
 
-var game *Game
-
 func main() {
 	game, err := NewGame()
 	if err != nil {

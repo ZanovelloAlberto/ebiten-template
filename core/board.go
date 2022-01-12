@@ -24,6 +24,8 @@ var taskTerminated = errors.New("twenty48: task terminated")
 
 type task func() error
 
+var GameBoard *Board
+
 // Board represents the game board.
 type Board struct {
 	size  int

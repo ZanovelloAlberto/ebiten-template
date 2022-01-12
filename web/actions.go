@@ -58,15 +58,15 @@ func (a *Actions) buildUI() {
 	bottom.Direction = furex.Row
 	bottom.Justify = furex.JustifyCenter
 	bottom.AlignItems = furex.AlignItemEnd
-	bottom.AddChild(core.NewButton(50, 50, func() {
+	bottom.AddChild(core.NewButton(200, 50, func() {
 		board, _ := core.NewBoard(4)
-		game.board = board
+		core.GameBoard = board
 	}, "NEW GAME"))
 	a.RootFlex.AddChildContainer(bottom)
 }
 
-// func buttonWithMargin(w, h int, margin []int) *shared.Button {
-// 	b := shared.NewButton(w, h)
-// 	b.SetMargin(margin)
-// 	return b
-// }
+func buttonWithMargin(w, h int, margin []int) *shared.Button {
+	b := shared.NewButton(w, h)
+	b.SetMargin(margin)
+	return b
+}
