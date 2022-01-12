@@ -13,6 +13,10 @@ type Actions struct {
 	isInitialized bool
 }
 
+var (
+	ScoreText string = "0"
+)
+
 func NewActions() (*Actions, error) {
 	actions := &Actions{
 		isInitialized: false,
@@ -47,6 +51,7 @@ func (a *Actions) buildUI() {
 	top.Justify = furex.JustifySpaceBetween
 	top.AlignItems = furex.AlignItemCenter
 	top.AddChild(core.NewPicture(assets.Icon, 100, 100))
+	// top.AddChild(core.NewTextField(50, color.RGBA{0, 0xff, 0, 0xff}, &ScoreText))
 	// top.AddChild(core.NewTextField(0, 0, core.FrameColor))
 	// top.AddChild(shared.NewBox(50, 50, color.RGBA{0, 0xff, 0, 0xff}))
 	a.RootFlex.AddChildContainer(top)
@@ -62,8 +67,7 @@ func (a *Actions) buildUI() {
 		core.GameBoard = board
 	}, "NEW GAME"))
 	bottom.AddChild(core.NewButton(100, 50, func() {
-		board, _ := core.NewBoard(4)
-		core.GameBoard = board
+		core.GameBoard.LastMoveBack()
 	}, "BACK"))
 	a.RootFlex.AddChildContainer(bottom)
 }

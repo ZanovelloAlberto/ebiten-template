@@ -7,6 +7,7 @@ import (
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/examples/resources/fonts"
 	"github.com/hajimehoshi/ebiten/v2/text"
+	uno "github.com/hajimehoshi/ebiten/v2/text"
 	"golang.org/x/image/font"
 	"golang.org/x/image/font/opentype"
 )
@@ -34,13 +35,18 @@ type TextField struct {
 	size           image.Point
 	margin         []int
 	backgroudColor color.RGBA
+	Text           *string
 }
 
-func NewTextField(w, h int, backgroudColor color.RGBA) *TextField {
+func NewTextField(size int, backgroudColor color.RGBA, text *string) *TextField {
 	b := new(TextField)
-	b.size = image.Pt(w, h)
+	textSize := uno.BoundString(fontMagico, "*b.ddTexkijjhjt")
+
+	b.size = image.Pt(textSize.Dx(), textSize.Dy())
 	b.margin = []int{0, 0, 0, 0}
 	b.backgroudColor = backgroudColor
+	b.Text = text
+
 	return b
 }
 
@@ -58,9 +64,13 @@ func (b *TextField) SetMargin(m []int) {
 
 func (b *TextField) Draw(screen *ebiten.Image, frame image.Rectangle) {
 
-	text.Draw(screen, "unosre", fontMagico, 100, 100, color.RGBA{0xed, 0xe0, 0xc8, 0xff})
-	// shared.FillRect(screen, frame, color.RGBA{0xff, 0, 0, 0xff})
-	// shared.DrawRect(screen, frame, b.backgroudColor, 2)
-	// ebitenutil.DebugPrintAt(screen, "TextField",
-	// 	frame.Min.X+((frame.Dx()-36)/2), frame.Min.Y+b.size.Y/2-8)
+	bo := text.BoundString(fontMagico, *b.Text)
+	text.Draw(
+		screen,
+		*b.Text,
+		fontMagico,
+		frame.Min.X+frame.Dx()/2-bo.Dx()/2,
+		frame.Min.Y+frame.Dy()/2+bo.Dy()/2,
+		b.backgroudColor,
+	)
 }
