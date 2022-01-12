@@ -1,8 +1,6 @@
 package main
 
 import (
-	"image/color"
-
 	"github.com/ZanovelloAlberto/EbitenGame/core"
 	"github.com/ZanovelloAlberto/EbitenGame/core/assets"
 	"github.com/hajimehoshi/ebiten/v2"
@@ -50,18 +48,23 @@ func (a *Actions) buildUI() {
 	top.AlignItems = furex.AlignItemCenter
 	top.AddChild(core.NewPicture(assets.Icon, 100, 100))
 	// top.AddChild(core.NewTextField(0, 0, core.FrameColor))
-	top.AddChild(shared.NewBox(50, 50, color.RGBA{0, 0xff, 0, 0xff}))
+	// top.AddChild(shared.NewBox(50, 50, color.RGBA{0, 0xff, 0, 0xff}))
 	a.RootFlex.AddChildContainer(top)
 
 	// bottom container
-	bottom := furex.NewFlex(ScreenWidth, 70)
+	bottom := furex.NewFlex(ScreenWidth*6/8, 70)
 	bottom.Direction = furex.Row
-	bottom.Justify = furex.JustifyCenter
-	bottom.AlignItems = furex.AlignItemEnd
-	bottom.AddChild(core.NewButton(200, 50, func() {
+	bottom.SetMargin([]int{20, 20, 20, 20})
+	bottom.Justify = furex.JustifySpaceBetween
+	// bottom.AlignItems = furex.AlignItemEnd
+	bottom.AddChild(core.NewButton(100, 50, func() {
 		board, _ := core.NewBoard(4)
 		core.GameBoard = board
 	}, "NEW GAME"))
+	bottom.AddChild(core.NewButton(100, 50, func() {
+		board, _ := core.NewBoard(4)
+		core.GameBoard = board
+	}, "BACK"))
 	a.RootFlex.AddChildContainer(bottom)
 }
 

@@ -57,14 +57,19 @@ func (b *Button) Draw(screen *ebiten.Image, frame image.Rectangle) {
 	} else {
 		FillRect(screen, frame, color.RGBA{0, 0xaa, 0, 0xff})
 	}
-	DrawRect(screen, frame, color.RGBA{0xff, 0xff, 0xff, 0xff}, 2)
+	DrawRect(screen, frame, color.RGBA{0, 0xaa, 0, 0xff}, 2)
+
+	bo := text.BoundString(fontMagico, b.Text)
 	text.Draw(
 		screen,
 		b.Text,
 		fontMagico,
-		frame.Min.X+frame.Dx()/2,
-		frame.Min.Y+frame.Dy()/2,
+		frame.Min.X+frame.Dx()/2-bo.Dx()/2,
+		frame.Min.Y+frame.Dy()/2+bo.Dy()/2,
 		color.RGBA{0xed, 0xe0, 0xc8, 0xff},
 	)
+	// a := &ebiten.DrawImageOptions{}
+	// a.GeoM.Translate(float64(frame.Min.X), float64(frame.Min.Y))
+	// text.DrawWithOptions(screen, b.Text, fontMagico, a)
 
 }

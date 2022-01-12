@@ -28,9 +28,19 @@ var GameBoard *Board
 
 // Board represents the game board.
 type Board struct {
-	size  int
-	tiles map[*Tile]struct{}
-	tasks []task
+	size     int
+	tiles    map[*Tile]struct{}
+	tasks    []task
+	lastTile map[*Tile]struct{}
+	moveBack bool
+}
+
+func (b *Board) LastMoveBack() bool {
+	if b.moveBack == false {
+		b.tiles = b.lastTile
+		b.moveBack = true
+	}
+	return true
 }
 
 // NewBoard generates a new Board with giving a size.
@@ -77,6 +87,9 @@ func (b *Board) Update(input func() (Dir, bool)) error {
 
 // Move enqueues tile moving tasks.
 func (b *Board) Move(dir Dir) error {
+
+	b.moveBack = false
+
 	for t := range b.tiles {
 		t.stopAnimation()
 	}
