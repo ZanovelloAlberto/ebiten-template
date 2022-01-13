@@ -25,6 +25,7 @@ var taskTerminated = errors.New("twenty48: task terminated")
 type task func() error
 
 var GameBoard *Board
+var Score int = 0
 
 // Board represents the game board.
 type Board struct {
@@ -33,7 +34,6 @@ type Board struct {
 	tasks         []task
 	lastMoveTiles map[*Tile]struct{}
 	moveBack      bool
-	score         int
 }
 
 func (b *Board) LastMoveBack() bool {
@@ -41,7 +41,7 @@ func (b *Board) LastMoveBack() bool {
 
 		b.tiles = b.lastMoveTiles
 		b.moveBack = true
-		b.score -= 8
+		Score -= 8
 
 		return true
 	}
@@ -92,8 +92,6 @@ func (b *Board) Update(input func() (Dir, bool)) error {
 
 // Move enqueues tile moving tasks.
 func (b *Board) Move(dir Dir) error {
-
-	b.score += 2
 
 	b.moveBack = false
 	b.lastMoveTiles = make(map[*Tile]struct{})

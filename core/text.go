@@ -1,6 +1,7 @@
 package core
 
 import (
+	"fmt"
 	"image"
 	"image/color"
 
@@ -35,15 +36,13 @@ type TextField struct {
 	size           image.Point
 	margin         []int
 	backgroudColor color.RGBA
-	Text           *string
+	Text           string
 }
 
-func NewTextField(size int, backgroudColor color.RGBA, text *string) *TextField {
+func NewTextField(backgroudColor color.RGBA, text string) *TextField {
 	b := new(TextField)
-	textSize := uno.BoundString(fontMagico, "*b.ddTexkijjhjt")
-
-	b.size = image.Pt(textSize.Dx(), textSize.Dy())
-	b.margin = []int{0, 0, 0, 0}
+	b.size = image.Pt(80, 40)
+	b.margin = []int{10, 10, 10, 10}
 	b.backgroudColor = backgroudColor
 	b.Text = text
 
@@ -51,6 +50,7 @@ func NewTextField(size int, backgroudColor color.RGBA, text *string) *TextField 
 }
 
 func (b *TextField) Size() (int, int) {
+
 	return b.size.X, b.size.Y
 }
 
@@ -64,13 +64,20 @@ func (b *TextField) SetMargin(m []int) {
 
 func (b *TextField) Draw(screen *ebiten.Image, frame image.Rectangle) {
 
-	bo := text.BoundString(fontMagico, *b.Text)
+	value := uno.BoundString(fontMagico, fmt.Sprint(Score)).Add(image.Pt(frame.Min.X, frame.Min.Y))
+	value.Max.X += frame.Dx() / 2
+	value.Max.Y += frame.Dy() / 2
+	FillRect(screen, frame, color.NRGBA{0xa3, 0x49, 0xa4, 0xff})
+	DrawRect(screen, frame, color.NRGBA{0xa3, 0x49, 0xa4, 0xff}, 2)
+
+	bo := text.BoundString(fontMagico, b.Text)
 	text.Draw(
 		screen,
-		*b.Text,
+		b.Text,
 		fontMagico,
 		frame.Min.X+frame.Dx()/2-bo.Dx()/2,
 		frame.Min.Y+frame.Dy()/2+bo.Dy()/2,
-		b.backgroudColor,
+		color.RGBA{0xee, 0xe4, 0xda, 0xff},
 	)
+
 }

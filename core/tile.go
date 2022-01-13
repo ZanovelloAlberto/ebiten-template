@@ -295,6 +295,7 @@ func addRandomTile(tiles map[*Tile]struct{}, size int) error {
 	if rand.Intn(10) == 0 {
 		v = 4
 	}
+	Score += v
 	x := c % size
 	y := c / size
 	t := NewTile(v, x, y)

@@ -1,6 +1,9 @@
 package main
 
 import (
+	"fmt"
+	"image/color"
+
 	"github.com/ZanovelloAlberto/EbitenGame/core"
 	"github.com/ZanovelloAlberto/EbitenGame/core/assets"
 	"github.com/hajimehoshi/ebiten/v2"
@@ -11,11 +14,8 @@ import (
 type Actions struct {
 	RootFlex      *furex.Flex
 	isInitialized bool
+	scoreLabel    *core.TextField
 }
-
-var (
-	ScoreText string = "0"
-)
 
 func NewActions() (*Actions, error) {
 	actions := &Actions{
@@ -30,7 +30,9 @@ func (a *Actions) Update() error {
 		a.buildUI()
 		a.isInitialized = true
 	}
+	a.scoreLabel.Text = fmt.Sprint(core.Score)
 	a.RootFlex.Update()
+
 	return nil
 }
 
@@ -51,9 +53,9 @@ func (a *Actions) buildUI() {
 	top.Justify = furex.JustifySpaceBetween
 	top.AlignItems = furex.AlignItemCenter
 	top.AddChild(core.NewPicture(assets.Icon, 100, 100))
-	// top.AddChild(core.NewTextField(50, color.RGBA{0, 0xff, 0, 0xff}, &ScoreText))
-	// top.AddChild(core.NewTextField(0, 0, core.FrameColor))
-	// top.AddChild(shared.NewBox(50, 50, color.RGBA{0, 0xff, 0, 0xff}))
+
+	a.scoreLabel = core.NewTextField(color.RGBA{0, 0xff, 0, 0xff}, "0")
+	top.AddChild(a.scoreLabel)
 	a.RootFlex.AddChildContainer(top)
 
 	// bottom container
